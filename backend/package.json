@@ -1,0 +1,36 @@
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "description": "this is the backend of the improve infrastructure for civilians ,it's the photo and map based and comment ,like system and notifications and much more function include in the improve infra for civilians.",
+  "main": "index.js",
+  "scripts": {
+    "test": "npm run dev",
+    "dev": "nodemon src/index.js",
+    "start": "node src/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/shreyashpatel5506/improveinfra.git"
+  },
+  "keywords": [
+    "improve",
+    "infra",
+    "fullstack",
+    "unique",
+    "project",
+    "civilians",
+    "infra"
+  ],
+  "author": "shreyash Patel (Head)",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/shreyashpatel5506/improveinfra/issues"
+  },
+  "homepage": "https://github.com/shreyashpatel5506/improveinfra#readme",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^17.2.0",
+    "express": "^5.1.0",
+    "mongoose": "^8.16.4"
+  }
+}
