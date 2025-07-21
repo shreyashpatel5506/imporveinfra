@@ -4,10 +4,10 @@ import connectDB from '../lib/db.js'; // Adjust the path as necessary
 import cors from 'cors';
 
 const app = express();
-// Load environment variables
+//ANCHOR Load environment variables
 dotenv.config();
 
-//connect with mongodb
+//LINK connect with mongodb
 connectDB();
 
 app.use('/', express.static('public'));

@@ -2,7 +2,7 @@ import mongoose from 'mongoose';
 
 
 const civilianSchema = new mongoose.Schema({
-    name: {
+    username: {
         type: String,
         required: true,
         trim: true,
