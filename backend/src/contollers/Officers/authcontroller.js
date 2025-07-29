@@ -1,5 +1,5 @@
 import express from 'express';
-import { User } from '../../models/User.model.js';
+import { User as Officer } from '../../models/User.model.js';
 import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
 import nodemailer from 'nodemailer';
@@ -78,13 +78,13 @@ const register = async (req, res) => {
         return res.status(400).json({ message: "All fields are required", success: false });
     }
 
-    const existingUser = await user.findOne({ email });
+    const existingUser = await Officer.findOne({ email });
     if (existingUser) {
         return res.status(409).json({ message: "Email already registered", success: false });
     }
 
     const hashedPassword = await bcrypt.hash(password, 10);
-    const newUser = new user({
+    const newOfficer = new Officer({
         username,
         email,
         phone,
@@ -92,7 +92,7 @@ const register = async (req, res) => {
     });
 
     try {
-        await newUser.save();
+        await newOfficer.save();
         return res.status(201).json({ message: "Registration successful", success: true });
     } catch (error) {
         return res.status(500).json({ message: "Server error", success: false });
@@ -105,17 +105,17 @@ const login = async (req, res) => {
         return res.status(400).json({ message: "Email and password are required", success: false });
     }
 
-    const userRecord = await user.findOne({ email });
-    if (!userRecord) {
+    const OfficerRecord = await Officer.findOne({ email });
+    if (!OfficerRecord) {
         return res.status(404).json({ message: "User not found", success: false });
     }
 
-    const isMatch = await bcrypt.compare(password, userRecord.password);
+    const isMatch = await bcrypt.compare(password, OfficerRecord.password);
     if (!isMatch) {
         return res.status(401).json({ message: "Invalid credentials", success: false });
     }
 
-    const token = jwt.sign({ id: userRecord._id }, process.env.JWT_SECRET, { expiresIn: '1h' });
+    const token = jwt.sign({ id: OfficerRecord._id }, process.env.JWT_SECRET, { expiresIn: '1h' });
     return res.status(200).json({ message: "Login successful", token, success: true });
 };
 
@@ -125,8 +125,8 @@ const forgotpassword = async (req, res) => {
         return res.status(400).json({ message: "Email is required", success: false });
     }
 
-    const userRecord = await user.findOne({ email });
-    if (!userRecord) {
+    const OfficerRecord = await user.findOne({ email });
+    if (!OfficerRecord) {
         return res.status(404).json({ message: "User not found", success: false });
     }
     const otp = Math.floor(100000 + Math.random() * 900000).toString();
