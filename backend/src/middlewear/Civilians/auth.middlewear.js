@@ -1,7 +1,7 @@
 import jwt from 'jsonwebtoken';
 import { User as Civilians } from './../../models/civilans/User.model.js'
 
-export const protectroute = async (req, res, next) => {
+export const civiliansProtectRoute = async (req, res, next) => {
     const token = req.headers.authorization && req.headers.authorization.startsWith('Bearer') ? req.headers.authorization.split(' ')[1] : null;
 
     if (!token) {
