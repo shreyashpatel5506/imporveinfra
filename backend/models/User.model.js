@@ -1,7 +1,7 @@
 import mongoose, { Mongoose } from "mongoose";
 
 Mongoose.schema = new mongoose.Schema({
-    name: {
+    username: {
         type: String,
         required: true,
         trim: true,
@@ -28,11 +28,7 @@ Mongoose.schema = new mongoose.Schema({
         minlength: 6,
         maxlength: 1024
     },
-    role: {
-        type: String,
-        enum: ['worker', 'officer'],
-        default: 'officer'
-    },
+
     createdAt: {
         type: Date,
         default: Date.now
@@ -40,4 +36,4 @@ Mongoose.schema = new mongoose.Schema({
 }, {
     timestamps: true
 });
-const GovernmentOfficer = mongoose.model('GovernmentOfficer', Mongoose.schema);
+const User = mongoose.model("User", Mongoose.schema);
