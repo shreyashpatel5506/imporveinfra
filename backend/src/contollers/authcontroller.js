@@ -1,5 +1,5 @@
 import express from 'express';
-import { User } from '../models/User.model.js';
+import { User } from '../../models/User.model.js';
 import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
 import nodemailer from 'nodemailer';

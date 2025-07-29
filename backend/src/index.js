@@ -1,6 +1,6 @@
 import dotenv from 'dotenv';
 import express from 'express';
-import connectDB from '../lib/db.js'; // Adjust the path as necessary
+import connectDB from './lib/db.js'; // Adjust the path as necessary
 import cors from 'cors';
 
 const app = express();
@@ -16,3 +16,4 @@ app.use(cors());
 app.get('/', (req, res) => {
     res.send('Welcome to the Improve Infra Backend!');
 });
+
